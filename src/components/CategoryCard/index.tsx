@@ -5,17 +5,34 @@ import {
   CategoryText,
   CategoryTitle,
   TasksQuantity,
+  CheckContainer,
+  IconCheck,
 } from './styles';
 
-export function CategoryCard() {
+type Props = {
+  category?: 'Inbox' | 'Work' | 'Shopping' | 'Family' | 'Personal';  
+  checked?: boolean;
+}
+
+export function CategoryCard({
+  category = 'Inbox',
+  checked = false
+}: Props) {
 
   return (
-    <Container>
+    <Container category={category}>
       <CategoryText>
-        <CategoryTitle>Personal</CategoryTitle>
+        <CategoryTitle category={category}>{category}</CategoryTitle>
 
-        <TasksQuantity>2 tasks</TasksQuantity>
+        <TasksQuantity category={category}>2 tasks</TasksQuantity>
       </CategoryText>
+
+      {
+        checked && 
+        <CheckContainer>
+          <IconCheck name="check"/>
+        </CheckContainer>
+      }
     </Container>
   );
 }
