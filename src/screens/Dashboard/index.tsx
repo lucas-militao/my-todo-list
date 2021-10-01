@@ -1,6 +1,7 @@
 import React from "react";
 import { FlatList, ScrollView } from "react-native";
-import { AddTaskButton } from "../../components/AddTaskButton";
+import { AddOptionWindow } from "../../components/AddOptionWindow";
+import { AddItemButton } from "../../components/AddItemButton";
 import { CategoryCard } from "../../components/CategoryCard";
 import { Task } from "../../components/Task";
 
@@ -17,6 +18,7 @@ import {
 } from './styles';
 
 export function Dashboard() {
+
   return (
     <Container>
       <Header>
@@ -31,33 +33,30 @@ export function Dashboard() {
 
       <Content>
         <FlatList
-          data={[1, 2, 4, 5]}
+          data={[1, 2, 4, 5, 6, 7, 8, 9]}
           keyExtractor={key => String(key)}
           renderItem={(item) => (
             <Task 
               name={`tarefa ${item.index}`}
-              completed={false} 
             />
           )}
           ItemSeparatorComponent={Separator}
           style={{ marginBottom: 32 }}
+          nestedScrollEnabled
         />
 
         <CategoriesContainer>
           <CategoryTitle>Lists</CategoryTitle>
-          
-          <ScrollView>
-            <CategoryCard />
-            <CategoryCard category="Family"/>
-            <CategoryCard category="Personal"/>
-            <CategoryCard category="Shopping"/>
-            <CategoryCard category="Work"/>
-          </ScrollView>
-
+          <CategoryCard />
+          <CategoryCard category="Family"/>
+          <CategoryCard category="Personal"/>
+          <CategoryCard category="Shopping"/>
+          <CategoryCard category="Work"/>
         </CategoriesContainer>
       </Content>
       
-      <AddTaskButton />
+      <AddOptionWindow />
+      <AddItemButton />
     </Container>
   )
 }

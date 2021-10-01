@@ -6,7 +6,7 @@ import {
   Container,
 } from './styles';
 
-export function AddTaskButton() {
+export function AddItemButton() {
 
   return(
     <Container>

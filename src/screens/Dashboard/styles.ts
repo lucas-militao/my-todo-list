@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 import { RFValue } from 'react-native-responsive-fontsize';
-import { getStatusBarHeight } from 'react-native-iphone-x-helper';
+import { getBottomSpace, getStatusBarHeight } from 'react-native-iphone-x-helper';
 import { BorderlessButton } from 'react-native-gesture-handler';
 
 export const Container = styled.View`
@@ -11,6 +11,7 @@ export const Header = styled.View`
   margin-top: ${getStatusBarHeight() + 60}px;
   padding-left: 60px;
   padding-right: 12px;
+  padding-bottom: 16px;
 
   flex-direction: row;
   align-items: center;
@@ -41,10 +42,10 @@ export const Dot = styled.View`
 
 `;
 
-export const Content = styled.View`
+export const Content = styled.ScrollView`
   width: 100%;
 
-  padding: 16px 0;
+  margin-bottom: ${getBottomSpace()}px;
 `;
 
 export const Separator = styled.View`
@@ -55,7 +56,8 @@ export const Separator = styled.View`
 `;
 
 export const CategoriesContainer = styled.View`
-  padding-left: 60px;
+  padding-left: 58px;
+  padding-right: 16px;
 `;
 
 export const CategoryTitle = styled.Text`
@@ -63,7 +65,7 @@ export const CategoryTitle = styled.Text`
   font-family: 'Roboto_700Bold';
 
   color: #252A31;
-  opacity: .3; 
+  opacity: .3;
 
   margin-bottom: 15px;
 `;

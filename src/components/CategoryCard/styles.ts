@@ -7,7 +7,7 @@ type Props = {
 }
 
 export const Container = styled.View<Props>`
-  width: 301px;
+  width: 100%;
   height: 69px;
 
   border-radius: 10px;

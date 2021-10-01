@@ -22,7 +22,7 @@ import {
 } from './styles';
 
 export function Register() {
-
+  
   return (
     <Container>
       <Header>

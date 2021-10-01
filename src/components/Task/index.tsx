@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import Unmarked from '../../assets/unmarked.svg';
+import Marked from '../../assets/marked.svg';
 
 import {
   Container,
@@ -35,11 +36,12 @@ export function Task({
   placeholder = '',
 }: Props) {
   const [title, setTitle] = useState(name);
+  const [finish, setFinish] = useState(completed);
 
   return(
     <Container>
       <CheckButton>
-        <Unmarked width={28}/>
+        { finish ? <Marked /> : <Unmarked />}
       </CheckButton>
 
       <TaskInfo>

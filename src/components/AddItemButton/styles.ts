@@ -6,8 +6,6 @@ export const Container = styled(RectButton)`
   height: 64px;
 
   border-radius: 32px;
-  border-width: 1px;
-  border-color: #006CFF;
 
   background-color: #FFFFFF;
 
