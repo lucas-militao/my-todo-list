@@ -9,22 +9,28 @@ import {
   IconCheck,
 } from './styles';
 
-type Props = {
-  category?: 'Inbox' | 'Work' | 'Shopping' | 'Family' | 'Personal';  
+interface Category {
+  title: string;
+}
+
+interface Props {
+  category: Category;  
   checked?: boolean;
+  showDetails: (category: Category) => void
 }
 
 export function CategoryCard({
-  category = 'Inbox',
-  checked = false
+  category,
+  checked = false,
+  showDetails
 }: Props) {
 
   return (
-    <Container category={category}>
+    <Container onPress={() => {showDetails(category)}}>
       <CategoryText>
-        <CategoryTitle category={category}>{category}</CategoryTitle>
+        <CategoryTitle>{category.title}</CategoryTitle>
 
-        <TasksQuantity category={category}>2 tasks</TasksQuantity>
+        <TasksQuantity>2 tasks</TasksQuantity>
       </CategoryText>
 
       {

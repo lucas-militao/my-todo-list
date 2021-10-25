@@ -1,33 +1,16 @@
 import { RFValue } from "react-native-responsive-fontsize";
 import styled, { css } from "styled-components/native";
 import { Feather } from "@expo/vector-icons";
+import { RectButton } from "react-native-gesture-handler";
 
-type Props = {
-  category: 'Inbox' | 'Work' | 'Shopping' | 'Family' | 'Personal';
-}
-
-export const Container = styled.View<Props>`
+export const Container = styled(RectButton)`
   width: 100%;
   height: 69px;
 
   border-radius: 10px;
 
-  ${({ category }) => category === 'Inbox' && css`
-    background-color: #EBEFF5;
-  `};
-  ${({ category }) => category === 'Work' && css`
-    background-color: #61DEA4;
-  `};
-  ${({ category }) => category === 'Shopping' && css`
-    background-color: #F45E6D;
-  `};
-  ${({ category }) => category === 'Family' && css`
-    background-color: #FFE761;
-  `};
-  ${({ category }) => category === 'Personal' && css`
-    background-color: #B678FF;
-  `};
-
+  background-color: #000000;
+  
   padding: 0 16px;
   flex-direction: row;
   align-items: center;
@@ -39,30 +22,18 @@ export const CategoryText = styled.View`
   flex: 1;
 `;
 
-export const CategoryTitle = styled.Text<Props>`
+export const CategoryTitle = styled.Text`
   font-size: ${RFValue(19)}px;
   font-family: 'Roboto_500Medium';
   margin-bottom: 4px;
 
   color: #FFFFFF;
-
-  ${({ category }) => 
-    (category === 'Inbox' ||  category === 'Family') && css`
-      color: #252A31;
-      opacity: 0.9;
-  `};
 `;
 
-export const TasksQuantity = styled.Text<Props>`
+export const TasksQuantity = styled.Text`
   font-size: ${RFValue(14)}px;
   font-family: 'Roboto_400Regular';
   color: #FFFFFF;
-
-  ${({ category }) => 
-    (category === 'Inbox' ||  category === 'Family') && css`
-      color: #252A31;
-      opacity: 0.5;
-  `};
 `;
 
 export const CheckContainer = styled.View`

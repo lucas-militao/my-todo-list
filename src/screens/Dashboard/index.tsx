@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { FlatList, ScrollView } from "react-native";
 import { AddOptionWindow } from "../../components/AddOptionWindow";
 import { AddItemButton } from "../../components/AddItemButton";
@@ -16,11 +16,33 @@ import {
   Menu,
   Dot,
 } from './styles';
+import { ModalTasksCategory } from "../../components/ModalTasksCategory";
+
+interface Category {
+  title: string;
+}
 
 export function Dashboard() {
+  const [showAddItemWindow, setShowAddItemWindow] = useState(false);
+  const [categoryDetails, setCategoryDetails] = useState({} as Category);
+  const [showModal, setShowModal] = useState(false);
+
+  function handleVisibilityOfAddItemWindow() {
+    setShowAddItemWindow(!showAddItemWindow);
+  }
+
+  function handleShowCategoryDetails(category: Category) {
+    setCategoryDetails(category);
+    setShowModal(true);
+  }
+
+  function handleCloseModal() {
+    setShowModal(false);
+  }
 
   return (
     <Container>
+      
       <Header>
         <HeaderTitle>Today</HeaderTitle>
 
@@ -31,7 +53,7 @@ export function Dashboard() {
         </Menu>
       </Header>
 
-      <Content>
+      <Content horizontal={false}>
         <FlatList
           data={[1, 2, 4, 5, 6, 7, 8, 9]}
           keyExtractor={key => String(key)}
@@ -45,18 +67,31 @@ export function Dashboard() {
           nestedScrollEnabled
         />
 
-        <CategoriesContainer>
-          <CategoryTitle>Lists</CategoryTitle>
-          <CategoryCard />
-          <CategoryCard category="Family"/>
-          <CategoryCard category="Personal"/>
-          <CategoryCard category="Shopping"/>
-          <CategoryCard category="Work"/>
-        </CategoriesContainer>
+        <FlatList
+          data={[1, 2, 3, 4]}
+          keyExtractor={key => String(key)}
+          renderItem={(item) => (
+            <CategoryCard 
+              category={{ title: `Categoria ${item.index}` }}
+              showDetails={handleShowCategoryDetails}
+            />
+          )}
+          nestedScrollEnabled
+          style={{ paddingLeft: 58, paddingRight: 16 }}
+        />
       </Content>
+
+      <ModalTasksCategory 
+        show={showModal}
+        category={categoryDetails}
+        closeModal={handleCloseModal}
+      />
       
-      <AddOptionWindow />
-      <AddItemButton />
+      {
+        showAddItemWindow && <AddOptionWindow />
+      }
+      <AddItemButton onPress={handleVisibilityOfAddItemWindow}/>
+
     </Container>
   )
 }

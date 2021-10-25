@@ -3,6 +3,7 @@ import styled from "styled-components/native";
 import { Feather } from '@expo/vector-icons';
 import { getBottomSpace } from "react-native-iphone-x-helper";
 import { RFValue } from "react-native-responsive-fontsize";
+import { BorderlessButton } from "react-native-gesture-handler";
 
 export const Background = styled.View`
   width: 100%;
@@ -28,7 +29,7 @@ export const WindowContainer = styled.View`
   opacity: 1;
 `;
 
-export const Option = styled.View`
+export const Option = styled(BorderlessButton)`
   flex: 1;
 
   padding: 0 18px;

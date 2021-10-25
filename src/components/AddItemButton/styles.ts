@@ -15,4 +15,6 @@ export const Container = styled(RectButton)`
   position: absolute;
   bottom: 44px;
   right: 16px;
+
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
 `;

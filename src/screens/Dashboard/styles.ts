@@ -39,7 +39,6 @@ export const Dot = styled.View`
   border-radius: 2.5px;
 
   background-color: #006CFF;
-
 `;
 
 export const Content = styled.ScrollView`
